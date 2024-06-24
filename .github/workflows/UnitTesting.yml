@@ -1,0 +1,57 @@
+name: Unit tests
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      fail-fast: false
+      matrix:
+        julia-version:
+          - '1'
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+        experimental: [false]
+        include:
+          # Include nightly, but experimental, so it's allowed to fail without
+          # failing CI.
+          - julia-version: nightly
+            os: ubuntu-latest
+            experimental: true
+            fail_ci_if_error: false
+          # Windows is extremely slow on 1.6, so we skip this combination,
+          # since it increases CI time by 5x
+          - julia-version: '1.7'
+            os: windows-latest
+            experimental: false
+          # Oldest supported version
+          - julia-version: '1.6'
+            os: ubuntu-latest
+            experimental: false
+          # MacOS Aarch64 reached Tier1 support of Julia in version 1.9
+          - julia-version: '1.9'
+            os: macOS-latest
+            experimental: false
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Setup Julia
+        uses: julia-actions/setup-julia@latest
+        with:
+          version: ${{ matrix.julia-version }}
+      - name: Run Tests
+        uses: julia-actions/julia-runtest@latest
+      - name: Create CodeCov
+        uses: julia-actions/julia-processcoverage@latest
+      - name: Upload CodeCov
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./lcov.info
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}

@@ -1,0 +1,9 @@
+[deps]
+BioJuliaTemplate = "0294bc8e-4aa2-4248-b79e-9c1e4efe5058"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+
+[compat]
+Documenter = "1"
+
+[sources]
+BioJuliaTemplate = {path = ".."}
