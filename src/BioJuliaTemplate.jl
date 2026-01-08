@@ -21,7 +21,7 @@ See also: [`my_function`](@ref)
 struct MyType{T <: Real}
     x::T
     y::T
-end 
+end
 
 """
     my_function(x::MyType) -> Real

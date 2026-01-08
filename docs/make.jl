@@ -9,7 +9,7 @@ meta = quote
     data = "abcde"
 end
 
-DocMeta.setdocmeta!(BioJuliaTemplate, :DocTestSetup, meta; recursive=true)
+DocMeta.setdocmeta!(BioJuliaTemplate, :DocTestSetup, meta; recursive = true)
 
 makedocs(
     modules = [BioJuliaTemplate],
@@ -22,12 +22,12 @@ makedocs(
     ],
     authors = "YourName",
     checkdocs = :public,
-    remotes=nothing
+    remotes = nothing
 )
 
 deploydocs(;
-    repo="github.com/BioJulia/BioJuliaTemplates.jl.git",
-    push_preview=true,
-    deps=nothing,
-    make=nothing,
+    repo = "github.com/BioJulia/BioJuliaTemplates.jl.git",
+    push_preview = true,
+    deps = nothing,
+    make = nothing,
 )
