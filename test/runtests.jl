@@ -11,7 +11,8 @@ using Aqua
 end
 
 @testset "Aqua" begin
-    Aqua.test_all(BioJuliaTemplate; 
+    Aqua.test_all(
+        BioJuliaTemplate
         # # Override defaults:
         # ambiguities = false,
         # unbound_args = false,
