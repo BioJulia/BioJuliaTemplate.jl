@@ -1,9 +1,8 @@
 using Documenter, BioJuliaTemplate
 
-# This code will be executed in the environment your doctests inside the
-# package's docstrings are run.
-# Use it to define some global variables that can be referred to in your
-# docstrings.
+# This code is executed in the environment in which doctests in the package's
+# docstrings run. Use it to define global variables that docstrings can refer
+# to.
 meta = quote
     using BioJuliaTemplate
     data = "abcde"
@@ -13,6 +12,7 @@ DocMeta.setdocmeta!(BioJuliaTemplate, :DocTestSetup, meta; recursive = true)
 
 makedocs(
     modules = [BioJuliaTemplate],
+    repo = Documenter.Remotes.GitHub("BioJulia", "BioJuliaTemplate.jl"),
     sitename = "BioJuliaTemplate.jl",
     doctest = true,
     # These two pages are recommended, you can add more as you wish
@@ -22,11 +22,10 @@ makedocs(
     ],
     authors = "YourName",
     checkdocs = :public,
-    remotes = nothing
 )
 
 deploydocs(;
-    repo = "github.com/BioJulia/BioJuliaTemplates.jl.git",
+    repo = "github.com/BioJulia/BioJuliaTemplate.jl.git",
     push_preview = true,
     deps = nothing,
     make = nothing,
