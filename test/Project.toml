@@ -1,0 +1,8 @@
+[deps]
+Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
+BioJuliaTemplate = "0294bc8e-4aa2-4248-b79e-9c1e4efe5058"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[compat]
+Aqua = "0.8.16"
+Test = "1.10"

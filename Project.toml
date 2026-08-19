@@ -5,15 +5,23 @@ version = "0.1.0"
 
 [deps]
 
+[compat]
+julia = "1.10"
+# The compat of these test deps are specified in the sub-project in test/Project.toml;
+# hence, they can be deleted here on Julia 1.12+
+Aqua = "0.8.16"
+Test = "1.10"
 
+# The workspaces section is only used on Julia 1.12+
+[workspace]
+projects = ["test", "docs"]
+
+# The extras and target sections are made obsolete by the workspace
+# section; hence, they are for compatibility with Julia versions < 1.12,
+# and can be deleted once the compat for Julia is >= 1.12.
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
-
-[compat]
-Aqua = "0.8.16"
-Test = "1.10"
-julia = "1.10"
 
 [targets]
 test = ["Test", "Aqua"]

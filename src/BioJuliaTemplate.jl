@@ -3,9 +3,9 @@ module BioJuliaTemplate
 export my_function, MyType
 
 """
-    MyStruct{T <: Real}
+    MyType{T <: Real}
 
-This struct represents a point in 2D-space.
+This type represents a point in two-dimensional space.
 
 # Examples
 ```jldoctest
@@ -26,7 +26,8 @@ end
 """
     my_function(x::MyType) -> Real
 
-Computes the L2 norm of `x`.
+Computes the Euclidean (L₂) norm of `x`.
+
 # Examples
 ```jldoctest
 julia> x = MyType(1.0, 2.0)

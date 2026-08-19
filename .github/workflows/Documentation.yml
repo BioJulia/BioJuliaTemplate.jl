@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - release/.*
+      - release-*
     tags: '*'
   pull_request:
 
@@ -12,6 +12,10 @@ jobs:
   Documenter:
     name: Documentation
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+      statuses: write
     steps:
       - uses: actions/checkout@v7
       - uses: julia-actions/julia-buildpkg@v1
