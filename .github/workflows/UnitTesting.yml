@@ -4,19 +4,19 @@ on:
   - push
   - pull_request
 
+permissions:
+  contents: read
+
 jobs:
   test:
+    name: Julia ${{ matrix.julia-version }} - ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
     strategy:
       fail-fast: false
       matrix:
-        julia-version:
-          - ['lts', '1', 'pre']
-        os: [ubuntu-latest, macOS-latest, windows-latest]
-        exclude:
-          - os: macOS-latest
-            julia-arch: x86
+        julia-version: ['1.10']
+        os: [ubuntu-latest, macos-latest, windows-latest]
         experimental: [false]
         include:
           # Include nightly, but experimental, so it's allowed to fail without
@@ -24,23 +24,29 @@ jobs:
           - julia-version: nightly
             os: ubuntu-latest
             experimental: true
-            fail_ci_if_error: false
+          # Add a test for the oldest compatible version (here, lts),
+          # but we do not test this for all OSs
+          - julia-version: '1.10'
+            os: ubuntu-latest
+
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       - name: Setup Julia
-        uses: julia-actions/setup-julia@latest
+        uses: julia-actions/setup-julia@3
         with:
           version: ${{ matrix.julia-version }}
       - name: Run Tests
-        uses: julia-actions/julia-runtest@latest
+        uses: julia-actions/julia-runtest@1
       - name: Create CodeCov
-        uses: julia-actions/julia-processcoverage@latest
+        if: matrix.julia-version == '1' && matrix.os == 'ubuntu-latest'
+        uses: julia-actions/julia-processcoverage@1
       - name: Upload CodeCov
-        uses: codecov/codecov-action@v4
+        if: matrix.julia-version == '1' && matrix.os == 'ubuntu-latest'
+        uses: codecov/codecov-action@v7
         with:
-          file: ./lcov.info
+          files: ./lcov.info
           flags: unittests
           name: codecov-umbrella
           fail_ci_if_error: false
