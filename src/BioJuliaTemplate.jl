@@ -1,5 +1,7 @@
 module BioJuliaTemplate
 
+using PrecompileTools: PrecompileTools
+
 export my_function, MyType
 
 """
@@ -40,5 +42,8 @@ julia> my_function(x)
 See also: [`MyType`](@ref)
 """
 my_function(x::MyType) = sqrt(x.x^2 + x.y^2)
+
+# Include precompilation at the end when everything else has been defined.
+include("precompile.jl")
 
 end # module BioJuliaTemplate
