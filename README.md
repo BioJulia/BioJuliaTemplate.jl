@@ -1,4 +1,4 @@
-# <img src="./sticker.svg" width="30%" align="right" /> BioJuliaTemplate.jl
+# <img src="./assets/sticker.svg" width="30%" align="right" /> BioJuliaTemplate.jl
 
 [![Latest Release](https://img.shields.io/github/release/BioJulia/BioJuliaTemplate.jl.svg)](https://github.com/BioJulia/BioJuliaTemplate.jl/releases/latest)
 [![MIT license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/BioJulia/BioJuliaTemplate.jl/blob/master/LICENSE)
