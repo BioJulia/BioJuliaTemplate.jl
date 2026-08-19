@@ -34,14 +34,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v7
       - name: Setup Julia
-        uses: julia-actions/setup-julia@3
+        uses: julia-actions/setup-julia@v3
         with:
           version: ${{ matrix.julia-version }}
       - name: Run Tests
-        uses: julia-actions/julia-runtest@1
+        uses: julia-actions/julia-runtest@v1
       - name: Create CodeCov
         if: matrix.julia-version == '1' && matrix.os == 'ubuntu-latest'
-        uses: julia-actions/julia-processcoverage@1
+        uses: julia-actions/julia-processcoverage@v1
       - name: Upload CodeCov
         if: matrix.julia-version == '1' && matrix.os == 'ubuntu-latest'
         uses: codecov/codecov-action@v7
