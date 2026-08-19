@@ -25,7 +25,7 @@ makedocs(
 )
 
 deploydocs(;
-    repo = "github.com/BioJulia/BioJuliaTemplate.jl.git",
+    repo = Documenter.Remotes.GitHub("BioJulia", "BioJuliaTemplate.jl"),
     push_preview = true,
     deps = nothing,
     make = nothing,

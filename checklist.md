@@ -9,6 +9,7 @@
 - [ ] Add code to the src directory
 - [ ] Add tests to the test directory
 - [ ] Add documentation to the docs directory
+- [ ] In GitHub, go to Settings -> Pages -> set source to Deploy from a branch, set branch to gh-pages.
 - [ ] Verify docs build locally and all doctests pass
 - [ ] Trigger CI and iteratively add tests until you get good coverage
 - [ ] Optionally run Aqua.jl
