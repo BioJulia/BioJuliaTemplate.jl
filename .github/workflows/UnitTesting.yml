@@ -27,6 +27,7 @@ jobs:
           # but we do not test this for all OSs
           - julia-version: '1.10'
             os: ubuntu-latest
+            experimental: false
 
 
     steps:
