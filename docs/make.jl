@@ -12,6 +12,7 @@ DocMeta.setdocmeta!(BioJuliaTemplate, :DocTestSetup, meta; recursive = true)
 
 makedocs(
     modules = [BioJuliaTemplate],
+    repo = Documenter.Remotes.GitHub("BioJulia", "BioJuliaTemplate.jl"),
     sitename = "BioJuliaTemplate.jl",
     doctest = true,
     # These two pages are recommended, you can add more as you wish
@@ -21,11 +22,10 @@ makedocs(
     ],
     authors = "YourName",
     checkdocs = :public,
-    remotes = nothing
 )
 
 deploydocs(;
-    repo = Documenter.Remotes.GitHub("BioJulia", "BioJuliaTemplate.jl"),
+    repo = "github.com/BioJulia/BioJuliaTemplate.jl.git",
     push_preview = true,
     deps = nothing,
     make = nothing,
